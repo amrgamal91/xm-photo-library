@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <mat-grid-list [cols]="breakpoint" rowHeight="25em" (window:resize)="onResize($event)">
+        <div *ngFor="let item of items">
+            <div class="img-container">
+                <mat-grid-tile>
+                    <mat-card class="item">
+                        <mat-card-content><img [src]='item.download_url' class="xm-image"
+                                crossorigin></mat-card-content>
+                        <mat-card-actions><button class="xm-fav-btn">add to Favorites</button></mat-card-actions>
+                    </mat-card>
+                </mat-grid-tile>
+            </div>
+        </div>
+    </mat-grid-list>
+
+
+
+    <div *ngIf="isLoading" style="text-align: center;">
+        <app-loading-spinerr></app-loading-spinerr>
+    </div>
+</div>

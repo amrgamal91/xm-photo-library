@@ -1,17 +1,14 @@
 <nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand">XM Photos</a>
-       <div class="text-center">
-        <ul class="nav justify-content-center">
+    <div class="container justify-content-center">
+        <ul class="nav ">
             <li class="nav-item">
-                <!-- <a routerLink="/articles" routerLinkActive="active" class="nav-link">Articles</a> -->
-                <button mat-raised-button color="primary">Primary</button>
+                <button (click)="navToPhotos()" [ngClass]="photosActive?'header-btn-active':'header-btn'"
+                    mat-stroked-button >Photos</button>
             </li>
             <li class="nav-item">
-                <!-- <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a> -->
-                <button mat-raised-button color="accent">Accent</button>
+                <button (click)="navToFavs()" [ngClass]="!photosActive?'header-btn-active':'header-btn'"
+                    mat-stroked-button >Favorites</button>
             </li>
         </ul>
-       </div>
     </div>
 </nav>
