@@ -2,6 +2,7 @@
     object-fit: contain;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
 .img-container{
@@ -22,4 +23,20 @@
 
 .item{
     margin: 1em;
+}
+
+.remove-fav-btn{
+    margin: 1em 2em;
+    background-color: #af77bd;
+    color: #000;
+    height: 50px;
+    border-radius: 5px;
+    &:hover{
+        background-color: #c6abcd;
+    }
+}
+
+.single-footer{
+    display: flex;
+    justify-content: center;
 }

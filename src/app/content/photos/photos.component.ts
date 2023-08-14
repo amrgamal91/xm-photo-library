@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { PhotoService } from 'src/app/services/photos.service';
+import { FavoriteImages, PhotoService } from 'src/app/services/photos.service';
 
 @Component({
   selector: 'app-photos',
@@ -9,7 +9,7 @@ import { PhotoService } from 'src/app/services/photos.service';
 export class PhotosComponent {
   items: any[] = [];
   page = 1;
-  perPage = 25; // number of images to be loaded
+  perPage = 50; // number of images to be loaded
   isLoading: boolean = false;
   breakpoint!: number;
 
@@ -17,11 +17,11 @@ export class PhotosComponent {
 
   ngOnInit(): void {
     this.loadItems();
-    this.breakpoint = window.innerWidth <= 600 ? 2 : 4;
+    this.breakpoint = window.innerWidth <= 600 ? 2 : 3;
   }
 
   onResize(event: any) {
-    this.breakpoint = event.target.innerWidth <= 600 ? 2 : 4;
+    this.breakpoint = event.target.innerWidth <= 600 ? 2 : 3;
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -43,5 +43,15 @@ export class PhotosComponent {
         this.page++;
         this.isLoading = false;
       });
+  }
+
+  addToFav($event: any) {
+    console.log('add to fav : ', $event);
+    let item = $event;
+    this.photoService.subject$.next([{ ...item }]);
+
+    let favImages = JSON.parse(localStorage.getItem('favImages') || '[]');
+    favImages.push({ id: item.id, url: item.download_url });
+    localStorage.setItem('favImages', JSON.stringify(favImages));
   }
 }

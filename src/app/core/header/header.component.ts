@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,15 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   photosActive = true;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: any ) => {
+        event.url.split('/').includes('photos')
+          ? (this.photosActive = true)
+          : (this.photosActive = false);
+      });
+  }
 
   navToPhotos() {
     this.router.navigate([`/photos`]);

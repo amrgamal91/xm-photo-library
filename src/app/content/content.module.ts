@@ -6,11 +6,13 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import{MatCardModule} from '@angular/material/card'
 import { SharedModule } from '../shared/shared.module';
+import { SinglePhotoComponent } from './single-photo/single-photo.component';
 
 @NgModule({
   declarations: [
     PhotosComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    SinglePhotoComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { SharedModule } from '../shared/shared.module';
   ],
   exports: [
     PhotosComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    SinglePhotoComponent
   ]
 })
 export class ContentModule { }

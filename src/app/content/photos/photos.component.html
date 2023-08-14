@@ -4,9 +4,9 @@
             <div class="img-container">
                 <mat-grid-tile>
                     <mat-card class="item">
-                        <mat-card-content><img [src]='item.download_url' class="xm-image"
+                        <mat-card-content><img [src]='item.download_url' class="xm-image" (click)="addToFav(item)"
                                 crossorigin></mat-card-content>
-                        <mat-card-actions><button class="xm-fav-btn">add to Favorites</button></mat-card-actions>
+                        <!-- <mat-card-actions><button (click)="addToFav(item)" class="xm-fav-btn">add to Favorites</button></mat-card-actions> -->
                     </mat-card>
                 </mat-grid-tile>
             </div>
