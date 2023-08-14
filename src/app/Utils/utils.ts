@@ -1,5 +1,5 @@
 export class Utility {
-  static handleBreakPoint(windowWidt: number): number {
-    return windowWidt <= 600 ? 1 : 3;
+  static handleBreakPoint(windowWidth: number): number {
+    return windowWidth <= 600 ? 1 : 3;
   }
 }
