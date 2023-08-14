@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FavoritesComponent } from './favorites.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 describe('FavoritesComponent', () => {
   let component: FavoritesComponent;
@@ -8,7 +9,8 @@ describe('FavoritesComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FavoritesComponent]
+      declarations: [FavoritesComponent],
+      imports:[MatGridListModule]
     });
     fixture = TestBed.createComponent(FavoritesComponent);
     component = fixture.componentInstance;

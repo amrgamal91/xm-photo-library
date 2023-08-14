@@ -21,7 +21,7 @@ export class SinglePhotoComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id') || '';
     this.photoService
       .getSingleImage(this.id)
-      .subscribe((data) => (this.item = data));
+      .subscribe((data) => {console.log("single Image = ",data);(this.item = data)});
   }
 
   removeFromFav() {
