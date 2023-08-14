@@ -2,10 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { delay } from 'rxjs';
-export interface FavoriteImages {
-  id: string;
-  url:string;
-}
 
 
 @Injectable({

@@ -2,7 +2,7 @@
   <mat-grid-list
     [cols]="breakpoint"
     rowHeight="25em"
-    (window:resize)="onResize($event)"
+    (window:resize)="onResize()"
   >
     <div *ngFor="let item of items">
       <div class="img-container">

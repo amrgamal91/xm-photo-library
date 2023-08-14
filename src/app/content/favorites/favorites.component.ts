@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PhotoService } from 'src/app/services/photos.service';
+import { Utility } from 'src/app/Utils/utils';
+import { FavoriteImages } from 'src/app/models/fav-Images.interface';
 
 @Component({
   selector: 'app-favorites',
@@ -8,18 +9,18 @@ import { PhotoService } from 'src/app/services/photos.service';
   styleUrls: ['./favorites.component.scss'],
 })
 export class FavoritesComponent implements OnInit {
-  items: any[] = [];
+  items: FavoriteImages[] = [];
   breakpoint!: number;
 
-  constructor(private photoService: PhotoService, private router: Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.breakpoint = window.innerWidth <= 600 ? 1 : 3;
     this.items = JSON.parse(localStorage.getItem('favImages') || '[]');
+    this.breakpoint = Utility.handleBreakPoint(window.innerWidth);
   }
 
-  onResize(event: any) {
-    this.breakpoint = event.target.innerWidth <= 600 ? 1 : 3;
+  onResize() {
+    this.breakpoint = Utility.handleBreakPoint(window.innerWidth);
   }
 
   navToSinglePhotoView(id: number) {

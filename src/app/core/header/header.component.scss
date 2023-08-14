@@ -1,19 +1,23 @@
-.header-btn{
+$base-color: #af77bd;
+$secondry-color: #ccc3ce;
+
+.header-btn {
     margin: 1em 2em;
-    background-color: white;
-    color: #af77bd;
-    &:hover{
-        background-color: #af77bd;
+    background-color: $secondry-color;
+    color: $base-color;
+
+    &:hover {
+        background-color: $base-color;
     }
 }
 
-.header-btn-active{
+.header-btn-active {
     margin: 1em 2em;
-    background-color: #af77bd;
-    color: white;
-    &:hover{
-        background-color: #c6abcd;
-    }
-    
-}
+    background-color: $base-color;
+    color: $secondry-color;
 
+    &:hover {
+        background-color: $secondry-color;
+    }
+
+}
