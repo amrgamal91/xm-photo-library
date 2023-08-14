@@ -10,7 +10,7 @@ import { FavoriteImages, PhotoService } from 'src/app/services/photos.service';
 export class PhotosComponent {
   items: any[] = [];
   page = 1;
-  perPage = 50; 
+  perPage = 50;
   isLoading: boolean = false;
   breakpoint!: number;
 
@@ -32,7 +32,7 @@ export class PhotosComponent {
   onWindowScroll(event: any) {
     let pos =
       (document.documentElement.scrollTop || document.body.scrollTop) +
-      document.documentElement.offsetHeight;
+       document.documentElement.offsetHeight;
     let max = document.documentElement.scrollHeight;
     if (pos == max && !this.isLoading) this.loadItems();
   }
@@ -50,7 +50,6 @@ export class PhotosComponent {
   }
 
   addToFav(item: any) {
-    this.photoService.subject$.next([{ ...item }]);
     let favImages = JSON.parse(localStorage.getItem('favImages') || '[]');
     if (
       favImages.findIndex((obj: FavoriteImages) => obj.id === item.id) == -1

@@ -14,7 +14,6 @@ export interface FavoriteImages {
 export class PhotoService {
   pendingRequest: boolean = false;
   apiUrl: string = 'https://picsum.photos/v2/';
-  subject$ = new BehaviorSubject<FavoriteImages[]>([]);
 
   constructor(private http: HttpClient) {}
 
@@ -22,10 +21,8 @@ export class PhotoService {
     if (this.pendingRequest) {
       return {} as Observable<{}>;
     }
-
     this.pendingRequest = true;
     const url = `${this.apiUrl}list?page=${page}&limit=${perPage}`;
-    console.log('url=', url);
     this.pendingRequest = false;
     return this.http.get<any>(url).pipe(delay(300));
   }
@@ -33,12 +30,8 @@ export class PhotoService {
   getSingleImage(id:string){
     this.pendingRequest = true;
     const url = `https://picsum.photos/id/${id}/info`;
-    console.log('url=', url);
     this.pendingRequest = false;
     return this.http.get<any>(url).pipe(delay(300));
   }
 
-  addImageToFavs(item:FavoriteImages){
-    this.subject$.next([{...item}]);
-  }
 }

@@ -1,18 +1,24 @@
 <div class="container-fluid">
-    <mat-grid-list [cols]="breakpoint" rowHeight="25em" (window:resize)="onResize($event)">
-        <div *ngFor="let item of items">
-            <div class="img-container">
-                <mat-grid-tile>
-                    <mat-card class="item">
-                        <mat-card-content><img [src]='item.url' class="xm-image"
-                                crossorigin (click)="navToSinglePhotoView(item.id)"></mat-card-content>
-
-                    </mat-card>
-                </mat-grid-tile>
-            </div>
-        </div>
-    </mat-grid-list>
-
-
-
+  <mat-grid-list
+    [cols]="breakpoint"
+    rowHeight="25em"
+    (window:resize)="onResize($event)"
+  >
+    <div *ngFor="let item of items">
+      <div class="img-container">
+        <mat-grid-tile>
+          <mat-card class="item">
+            <mat-card-content>
+                <img
+                    [src]="item.url"
+                    class="xm-image"
+                    crossorigin
+                    (click)="navToSinglePhotoView(item.id)"
+                />
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </div>
+    </div>
+  </mat-grid-list>
 </div>

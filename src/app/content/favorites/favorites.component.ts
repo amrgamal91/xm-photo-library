@@ -10,23 +10,19 @@ import { PhotoService } from 'src/app/services/photos.service';
 export class FavoritesComponent implements OnInit {
   items: any[] = [];
   breakpoint!: number;
-  constructor(private photoService: PhotoService,private router:Router) {}
+
+  constructor(private photoService: PhotoService, private router: Router) {}
 
   ngOnInit(): void {
-    console.log("here in on init")
     this.breakpoint = window.innerWidth <= 600 ? 1 : 3;
     this.items = JSON.parse(localStorage.getItem('favImages') || '[]');
-    console.log("favoritessss: ",this.items)
-    this.photoService.subject$.subscribe((data) => {
-      console.log('favorite images  = ', data);
-    });
   }
 
   onResize(event: any) {
     this.breakpoint = event.target.innerWidth <= 600 ? 1 : 3;
   }
 
-  navToSinglePhotoView(id:number){
-    this.router.navigate(['/photos/',id]);
+  navToSinglePhotoView(id: number) {
+    this.router.navigate(['/photos/', id]);
   }
 }
