@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FavoriteImages, PhotoService } from 'src/app/services/photos.service';
 
 @Component({
@@ -9,19 +10,22 @@ import { FavoriteImages, PhotoService } from 'src/app/services/photos.service';
 export class PhotosComponent {
   items: any[] = [];
   page = 1;
-  perPage = 50; // number of images to be loaded
+  perPage = 50; 
   isLoading: boolean = false;
   breakpoint!: number;
 
-  constructor(private photoService: PhotoService) {}
+  constructor(
+    private photoService: PhotoService,
+    public snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.loadItems();
-    this.breakpoint = window.innerWidth <= 600 ? 2 : 3;
+    this.breakpoint = window.innerWidth <= 600 ? 1 : 3;
   }
 
   onResize(event: any) {
-    this.breakpoint = event.target.innerWidth <= 600 ? 2 : 3;
+    this.breakpoint = event.target.innerWidth <= 600 ? 1 : 3;
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -45,13 +49,25 @@ export class PhotosComponent {
       });
   }
 
-  addToFav($event: any) {
-    console.log('add to fav : ', $event);
-    let item = $event;
+  addToFav(item: any) {
     this.photoService.subject$.next([{ ...item }]);
-
     let favImages = JSON.parse(localStorage.getItem('favImages') || '[]');
-    favImages.push({ id: item.id, url: item.download_url });
-    localStorage.setItem('favImages', JSON.stringify(favImages));
+    if (
+      favImages.findIndex((obj: FavoriteImages) => obj.id === item.id) == -1
+    ) {
+      favImages.push({ id: item.id, url: item.download_url });
+      localStorage.setItem('favImages', JSON.stringify(favImages));
+      this.snackBar.open(
+        `photo with id : ${item.id} is added to favorites`,
+        '',
+        {
+          duration: 2000,
+        }
+      );
+    } else {
+      this.snackBar.open(`photo is already in favorites`, '', {
+        duration: 2000,
+      });
+    }
   }
 }

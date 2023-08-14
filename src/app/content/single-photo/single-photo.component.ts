@@ -26,6 +26,6 @@ export class SinglePhotoComponent implements OnInit {
     let favImages = JSON.parse(localStorage.getItem('favImages') || '[]');
     favImages.splice(favImages.findIndex((item: { id: string; }) => item.id === this.id) , 1)
     localStorage.setItem('favImages', JSON.stringify(favImages));
-    this.router.navigate(['/photos']);
+    this.router.navigate(['/favorites']);
   }
 }

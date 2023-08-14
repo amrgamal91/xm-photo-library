@@ -14,7 +14,7 @@ export class FavoritesComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("here in on init")
-    this.breakpoint = window.innerWidth <= 600 ? 2 : 4;
+    this.breakpoint = window.innerWidth <= 600 ? 1 : 3;
     this.items = JSON.parse(localStorage.getItem('favImages') || '[]');
     console.log("favoritessss: ",this.items)
     this.photoService.subject$.subscribe((data) => {
@@ -23,7 +23,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   onResize(event: any) {
-    this.breakpoint = event.target.innerWidth <= 600 ? 2 : 4;
+    this.breakpoint = event.target.innerWidth <= 600 ? 1 : 3;
   }
 
   navToSinglePhotoView(id:number){

@@ -7,6 +7,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import{MatCardModule} from '@angular/material/card'
 import { SharedModule } from '../shared/shared.module';
 import { SinglePhotoComponent } from './single-photo/single-photo.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,9 +17,11 @@ import { SinglePhotoComponent } from './single-photo/single-photo.component';
     SinglePhotoComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     CommonModule,
     MatGridListModule,
     MatCardModule,
+    MatSnackBarModule,
     SharedModule
   ],
   exports: [
