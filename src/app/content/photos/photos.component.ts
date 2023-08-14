@@ -49,7 +49,6 @@ export class PhotosComponent {
     this.photoService
       .getImages(this.page, IMAGES_PER_PAGE)
       .subscribe((items: any) => {
-        console.log("items= ",items)
         this.items.push(...items);
         this.page++;
         this.isLoading = false;
