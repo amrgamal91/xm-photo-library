@@ -1,13 +1,14 @@
 <div class="container">
-    <mat-card class="item">
-        <mat-card-content><img [src]='item?.download_url' class="xm-image"
-                crossorigin></mat-card-content>
-        <!-- <mat-card-actions><button (click)="addToFav(item)" class="xm-fav-btn">add to Favorites</button></mat-card-actions> -->
-    </mat-card>
+  <mat-card class="item">
+    <mat-card-content
+      ><img [src]="item?.download_url" class="xm-image" crossorigin
+    /></mat-card-content>
+    <!-- <mat-card-actions><button (click)="addToFav(item)" class="xm-fav-btn">add to Favorites</button></mat-card-actions> -->
+  </mat-card>
 
-    <div class="single-footer">
-        <button class="remove-fav-btn" (click)="removeFromFav()"
-    mat-stroked-button >Remove from favorites</button>
-    </div>
-    
+  <div class="single-footer">
+    <button class="remove-fav-btn" (click)="removeFromFav()" mat-stroked-button>
+      Remove from favorites
+    </button>
+  </div>
 </div>

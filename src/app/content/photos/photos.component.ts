@@ -32,7 +32,7 @@ export class PhotosComponent {
   onWindowScroll(event: any) {
     let pos =
       (document.documentElement.scrollTop || document.body.scrollTop) +
-       document.documentElement.offsetHeight;
+      document.documentElement.offsetHeight;
     let max = document.documentElement.scrollHeight;
     if (pos == max && !this.isLoading) this.loadItems();
   }
@@ -43,7 +43,7 @@ export class PhotosComponent {
       .getImages(this.page, this.perPage)
       .subscribe((items: any) => {
         this.items.push(...items);
-        console.log(items);
+        // console.log(items);
         this.page++;
         this.isLoading = false;
       });
@@ -56,17 +56,19 @@ export class PhotosComponent {
     ) {
       favImages.push({ id: item.id, url: item.download_url });
       localStorage.setItem('favImages', JSON.stringify(favImages));
-      this.snackBar.open(
-        `photo with id : ${item.id} is added to favorites`,
-        '',
-        {
-          duration: 2000,
-        }
-      );
+      this.displaySnackBar(false, item.id);
     } else {
-      this.snackBar.open(`photo is already in favorites`, '', {
-        duration: 2000,
-      });
+      this.displaySnackBar(true);
     }
+  }
+
+  displaySnackBar(added: boolean, id?: string) {
+    added
+      ? this.snackBar.open(`photo is already in favorites`, '', {
+          duration: 2000,
+        })
+      : this.snackBar.open(`photo with id : ${id} is added to favorites`, '', {
+          duration: 2000,
+        });
   }
 }
